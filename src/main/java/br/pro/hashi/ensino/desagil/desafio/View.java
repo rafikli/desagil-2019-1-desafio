@@ -1,6 +1,7 @@
 package br.pro.hashi.ensino.desagil.desafio;
 
 import br.pro.hashi.ensino.desagil.desafio.model.Board;
+import br.pro.hashi.ensino.desagil.desafio.model.CpuPlayer;
 import br.pro.hashi.ensino.desagil.desafio.model.Element;
 import br.pro.hashi.ensino.desagil.desafio.model.Model;
 
@@ -72,6 +73,17 @@ public class View extends JPanel {
             g.drawImage(image, col * CELL_SIZE, row * CELL_SIZE, CELL_SIZE, CELL_SIZE, this);
         });
 
+        if (model.getWinner() != null ){
+            if (model.getWinner() == model.getHumanPlayer()){
+                g.setColor(Color.RED);
+                g.drawString("O humano vence!",25,25);
+            }
+
+            else if(model.getWinner() == model.getCpuPlayer()){
+                g.setColor(Color.RED);
+                g.drawString("A cpu vence!",25,25);
+            }
+        }
         // Linha necessária para evitar atrasos
         // de renderização em sistemas Linux.
         getToolkit().sync();
